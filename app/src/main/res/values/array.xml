@@ -12,7 +12,8 @@
         <item>Hajer</item>
         <item>Asma</item>
     </string-array>
-    <string-array name="student_images">
+
+    <integer-array name="student_images">
         <item>@mipmap/ic_launcher</item>
         <item>@mipmap/ic_launcher</item>
         <item>@mipmap/ic_launcher</item>
@@ -23,6 +24,6 @@
         <item>@mipmap/ic_launcher</item>
         <item>@mipmap/ic_launcher</item>
         <item>@mipmap/ic_launcher</item>
-    </string-array>
+    </integer-array>
 
 </resources>

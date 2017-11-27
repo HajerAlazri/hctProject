@@ -16,43 +16,44 @@ import ita.om.hctproject.R;
  * Created by sasmob on 11/26/2017.
  */
 
-public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHolder>{
-    ArrayList<Student_Info> student;
-    Context context;
+public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHolder>{
+    Context mContext;
+    ArrayList<Student_Info> infoArrayList;
+    public StudentAdapter( Context mContext, ArrayList<Student_Info> infoArrayList){
+        this.mContext=mContext;
+        this.infoArrayList= infoArrayList;
+    }
+    @Override
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = (LayoutInflater) mContext.
+         getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view= inflater.inflate(R.layout.student_cardview, parent, false);
 
-    public StudentAdapter(ArrayList<Student_Info> student, Context context) {
-        this.student = student;
-        this.context = context;
+        return new MyViewHolder(view);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater= (LayoutInflater) context.
-      getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view=inflater.inflate(R.layout.list_item, parent, false);
-        return new ViewHolder(view);
-    }
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        Student_Info student= infoArrayList.get(position);
+        holder.name.setText(student.getName());
+        holder.image.setImageResource(student.getStudent_image());
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-                 Student_Info student_info= student.get(position);
-        holder.name.setText(student_info.getName());
-        holder.imagestudent.setImageResource(student_info.getStudent_image());
     }
 
     @Override
     public int getItemCount() {
-        return student.size();
+        return infoArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    //views that is going to display on recycler view
+    public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView name;
-        ImageView imagestudent;
+        ImageView image;
 
-        public ViewHolder(View itemView) {
+        public MyViewHolder(View itemView) {
             super(itemView);
-          name = (TextView) itemView.findViewById(R.id.name);
-          imagestudent=(ImageView) itemView.findViewById(R.id.image);
+         name=(TextView)   itemView.findViewById(R.id.textView);
+            image=(ImageView)  itemView.findViewById(R.id.profile_image);
         }
     }
 }
