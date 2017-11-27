@@ -20,6 +20,7 @@ public class TermsAndCondition extends AppCompatActivity {
         webView.loadUrl("file:///android_asset/terms_conditions.abc");
         checkBox= (CheckBox) findViewById(R.id.checkBox);
 
+
     }
     public void acceptTermAndCondition( View view){
         if(!checkBox.isChecked()){
